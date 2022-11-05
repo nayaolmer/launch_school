@@ -1,0 +1,29 @@
+
+welcome: "This calculator will perform addition, subtraction, multiplication, or division for two numbers."
+
+first_number: "Please enter the first number:"
+validate_first_number: "Please enter a number:"
+
+second_number: "Please enter the second number:"
+validate_second_number: "Please enter a number:"
+
+operator_prompt: <<-MSG
+    Please select which action you would like to perform.
+    (a) type "a" for addition
+    (s) type "s" for subtraction
+    (m) type "m" for multiplication
+    (d) type "d" for division
+  MSG
+
+validate_operation_selection: "Please select a valid action. Type \"a\" for addition, \"s\" for subtraction, \"m\" for multiplication, and \"d\" for division."
+
+addition_selected: "Addition selected."
+subtraction_selected: "Subtraction selected."
+multiplication_selected: "Multiplication selected."
+division_selected: "Division selected."
+
+validated_non_zero_second_number: "Please replace the second number with a non-zero number."
+
+perform_another_calc: "Do you want to perform another calculation? (Y/N)"
+
+goodbye_message: "The end!"
