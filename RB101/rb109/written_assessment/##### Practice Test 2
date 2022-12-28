@@ -1,0 +1,89 @@
+##### Practice Test 2
+https://github.com/gcpinckert/rb_109/blob/main/practice_tests/01_questions.md
+
+(1) 
+
+The following code returns all the odd numbers of the `arr` array: `[1, 3, 5, 7, 9]`. It does not output anything.
+
+In this code snippet, we are calling the `select` method on the `arr` array. The `select` method iterates over every element of the `arr` arry and checks whether the method `odd?` called on the element evaluates to `true` or `false`. If the method evaluates to `true`, the element is returned. If the method evalutes to `false` the element is not returned. 
+
+(2) The following code returns `nil` and outputs `[false, true, true, true, true, true, true, true, true, true]`
+
+In this code snippet, we begin by initalizing an array `arr` and setting it equal to `[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]`. Then, we call the `map` method on the `arr` collection. The `map` method iterates over every element in the called collection and returns a new array with the output value of the block called with the `map` method. In this case, the block called with `map` checks whether or not the element is greater than 1. This returns the array 
+`[false, true, true, true, true, true, true, true, true, true]`. We set `new_array` equal to this array and then print new_array to our console using `p`. 
+
+(3) 
+This code snippet calls the `all?` method on a hash and passes it a block, which creates an innerscope. The `all?` method iterates over every key/value pair in the hash and checks if the specified condition in the `do..end` block evaluates to `true` for every key/value pair. In this case, the `all?` method checks if the value of each key-value pair is at least 3 characters long. Since each key of the hash is at least 3 characters long, this code snippet will return `true` and output `true`.
+
+(5)
+
+The code returns and outputs `[1, 2, 3]`. 
+
+In this snippet, we initialize three variables: `a`, which is set equal to the array `[1, 2, 3, 3]`, `b`, which is set to point to the same array as `a`, and `c`, which is set equal to the `a` array with the `uniq` method called upon it. 
+
+In `a.uniq`, the `uniq` method is called on the `a` array, with only the unique values of the array returned. the `uniq` method does not mutate the caller, so the `a` array and the `b` array are left as their original values, and c is set to `[1, 2, 3]`. Since `c = a.uniq` is the last line in the program, the program outputs and returns `[1, 2, 3]`. 
+
+This code snippet demonstrates that variables can point to the same object, and whether methods called on that object mutate the object or not. 
+
+If we changed the last line to `c = a.uniq!`, the values of `a` and `b` will change. The `uniq!` method mutates the caller, so the variable `a` would now be set to `[1, 2, 3]`. Since `b` is a shallow copy of `a` and points to the same array as `a`, changing the array `a` points to to `[1, 2, 3]` will also change the array that `b` points to to `[1, 2, 3]`. 
+
+(6) 
+In this code snippet, we define the method `fix` with input parameter `value`. The method changes the input `value`'s element at index 1 to 'x' and then returns the mutated `value`. 
+We then initialize variable `s` with value `abc`. We then initialize variable `t` and set it to the value of `fix(s)`. 
+
+The code returns and outputs `axc` since the last line of the program sets `t` to `fix(s)`, which is `axc`. 
+
+Both `t` and `s` will have the value `axc`. This is because index mutations mutate the caller. In this case, the method `fix(s)` sets the `b` at index 1 of `s` to `x`. 
+
+
+
+
+(9)
+
+We begin by initializing variable `a` and assigning it a value of "Hello". Then, we initialize variable `b` and assign it to `a`. At this point, both `a` and `b` point to the same object in memeory. 
+
+Then, we assign `a` to a new string, "Goodbye". This does not alters the object in memory but changes the location/object ID of the variable `a`. At this point, `b` and `a` point to different objects in memory. Thus, `a` is changed, but `b` remains the same - "Hello", and the code outputs:
+
+```
+=> "Goodbye"
+=> "Hello"
+```
+The code returns `nil`, since print statements always return `nil`. This demonstrates the concept of variables as pointers to objects in memory and what type of changes to variables are mutating vs resetting. 
+
+(10) 
+
+We begin by initializing variable `a` and setting it to the string object `"hello"`. Next, we call the `map` method on the array `[1, 2, 3]`. The `map` method iterates over every item in the array, performing the logic specified in the `do..end` block initilized with the `map` method. The `map` method then returns a new array with the results of the logic performed. In this case, the `map` method returns the variable `a` over each iterated item. Thus, the resulting output array will be ['hello','hello','hello'].
+
+Next, we invoke the `map` method over the array `[1, 2, 3]` and pass it a block as an argument. This creates an inner scope. 
+
+`map` iterates over all the elements of the calling array and passes each to the block. Within the block, the current element is assigned the block parameter `num`. The block only contains the variable `a`, which will return `"hello"`, the string object that `a` references. The local variable `a` is available within the innter scope because it was initialized in the outer scope. Since `a` is the last line code evaluated by the block, its return value, `"hello"`, will be the return value of the block. `map` returns a new array, which contains the return value of the block for each element passed to it. In this case, the return value will always be `"hello"`, so the return value of this code will be the array `["hello","hello", "hello"]`.
+
+(11)
+In this code snippet, we invoke the `each` method over the array `[1, 2, 3]` and pass it a block as an argument, which creates an inner scope. `each` iterates over each element of the calling array and passes each to the block. Within the block, the element is assigned the block paramenter `num`. Within the block, the code returns `nil` and outputs the value of the element. Thus, the output of this code snippet will be:
+```
+1
+2
+3
+```
+
+The `each` method always returns the original value of the calling array, in this case `[1, 2, 3]`. 
+
+(12) 
+We initialize the `arr` array and set it equal to the array `[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]`. 
+
+We then initialize a new array, `incremented`. This array is set equal to the following value:
+We invoke the `map` method over the `arr` array and pass it a block argument. This creates an inner scope. The `map` method iterates over every element in the calling array and passes each to the block. Within the block, the element is assigned to the block parameter `n`. Within the block, the element is incremented by 1, returning the value of the element + 1. The `map` method collects these return values into an array that it returns, in this case, `[2, 3, 4, 5, 6, 7, 8, 9, 10, 11]`. We set `incremented` to this array. 
+
+In the end, we pass `incremented` to the `p` method which prints the array to the consol and returns the `incremented` array. 
+
+The original array object is unchanged. 
+
+
+
+
+(13) 
+We initialize variable `a` and set it equal to the integer `4`. 
+We then initialize a loop, which creates an inner scope. Within the loop, we reassign variable `a` to the integer 5. and we initialize variable `b` and set it to the integer `3`. Once these variables are set, we `break` the loop and continue to the rest of our code. We pass `a` to the `puts` method, which returns `nil` and outputs 5 in our console. We then pass `b` to the `puts` method, which returns `nil` and outputs 3. 
+
+
+

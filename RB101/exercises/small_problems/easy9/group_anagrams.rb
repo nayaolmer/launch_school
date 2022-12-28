@@ -15,9 +15,6 @@ def group_anagrams(words)
 
 end
 
-
-
-
 example =  ['demo', 'none', 'tied', 'evil', 'dome', 'mode', 'live',
           'fowl', 'veil', 'wolf', 'diet', 'vile', 'edit', 'tide',
           'flow', 'neon']

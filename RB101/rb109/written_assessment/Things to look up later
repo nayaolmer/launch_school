@@ -1,0 +1,20 @@
+Things to look up later
+
+>> What it's called when you use the same variable name for two different variables in a code (Question 2 of practice test)
+
+Question 3
+### How does count treat the block's return value? How can we find out?
+^^ I don't know what it means to "treat the block's return value"
+
+The vocabulary for "scope"/things set outside of the scope of the loop?
+
+What do they mean by return vs. output?
+
+
+
+Good vocab:
+(1) elements in an enumerable 
+(2) Output
+(3) Method invocation
+(4) Method `do..end` block 
+(5) evaluates to true/false, is truthy/falsy
