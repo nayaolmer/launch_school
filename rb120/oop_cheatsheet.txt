@@ -1,0 +1,151 @@
+attr_accessor
+attr_reader
+attr_writer
+
+def initialize
+end
+
+
+Access:
+Public
+Private
+Protected << can access variable that's called with an object in a function defined within the class
+>>>>> Example:
+
+class Person
+  attr_writer :age
+
+  def older_than?(other)
+    age > other.age
+  end
+
+  protected
+  attr_reader :age
+end
+
+person1 = Person.new
+person1.age = 17
+
+person2 = Person.new
+person2.age = 26
+
+puts person1.older_than?(person2)
+
+>>> If it was private, `age > other.age` wouldn't work.
+
+
+setter:
+def name=(some_name)
+  @name = some_name
+end
+
+getter:
+def name
+  @name
+end
+
+
+##### What does a new def .to_s do?
+Basically when we define a new .to_s method in the class, it means that when you do
+`puts Object`, that will print out whatever you put in the new `to_s` method.
+Example:
+  def to_s
+    %("#{title}", by #{author})
+  end
+
+
+------------
+When to use :: vs. #
+>> :: is a class method, # is an instance method
+class Person
+  GREETINGS = ['Hello', 'Hi', 'Hey']
+
+  def self.greetings
+    GREETINGS.join(', ')
+  end
+
+  def greet
+    GREETINGS.sample
+  end
+end
+
+Person::GREETINGS
+Person::greetings
+new_person.greet
+
+-------------------
+Exception raising
+begin
+  # code at risk of failing here
+rescue StandardError => e   # storing the exception object in e
+  puts e.message            # output error message
+end
+
+file = open(file_name, 'w')
+begin
+  # do something with file
+rescue
+  # handle exception
+rescue
+  # handle a different exception
+ensure
+  file.close
+  # executes every time
+end
+
+RETRY_LIMIT = 5
+begin
+  attempts = attempts || 0
+  # do something
+rescue
+  attempts += 1
+  retry if attempts < RETRY_LIMIT
+end
+
+--------------------
+list the instance variables for an object:
+>> hot_pizza.instance_variables
+=> [:@name]
+>> orange.instance_variables
+=> []
+
+-----------------------------
+Get the lookup path/ancestors
+
+object.ancestors
+
+------------------------------
+What are the benefits of OOP?
+(1) Creating objects increases the level of abstraction programmers can think about their code,
+which makes it easier to reason/logic through code
+(2) Objects represented by nouns are easier to conceptualize
+(3) We can cordon off certain functionalities so we can easily only expose functionality
+to the parts of the code that need it
+(4) We can give functionality to different parts of the application without duplication
+(5) We can build applications faster as we can reuse pre-written code
+(6) It helps us to manage complexity of larger and larger software systems
+
+--------------------------------
+What's a Struct?
+
+An easy way to make an object on the fly without defining the class. It's useful for objects that don't have any methods and just store data:
+Pet = Struct.new('Pet', :kind, :name, :age)
+asta = Pet.new('dog', 'Asta', 10)
+
+--------------------------------
+How to enable/disable Rubocop?
+
+Wrap the code you want rubocop to ignore with:
+# rubocop:disable Metrics/AbcSize
+# rubocop:enable Metrics/AbcSize
+
+-----------------------------------------------------------
+Reference a constant from a subclass within a superclass:
+self.class::MY_CONSTANT
+
+-----------------------------------------------------------
+alias method syntax
+
+alias_method :read,  :byte_content
+alias_method :write, :byte_content=
+-----------------------------------------------------------

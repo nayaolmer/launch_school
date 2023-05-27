@@ -1,0 +1,37 @@
+### Key Terms for Written Assessment ###
+
+(1) Method definition
+(2) Method invocation/method call
+(3) Output
+(4) Return value
+(5) Evaluates to true/false, is truthy/falsy
+(6) a is initialized and value "hello" is assigned to it
+(7) parameter
+(8) Method invocation with block 
+(9) inner/outer scope
+(10) Variable shadowing -- when you set a = 10 and then arr.each { |a| a = 5 }
+(11)  Pass by value -- original object is not mutated. Pass by reference - original object is mutated
+(12) immutable objects: integers, booleans, ranges, and nil
+(13) mutable objects: strings, hashes, arrays, indexed assignment, concatenation
+(14) destructive method
+(15) "Both objects reference the same object in memory"
+(16) setter method / indexed assignment >> x[1] = 'b' 
+
+
+Working with Collections
+[1, 2, 3].each { |num| num.odd?}
+>> [1, 2, 3] is called a collection
+>> .each is a method
+>> |num| represents elements in the collection
+
+Sorting 
+
+
+"We invoke the `map` method over the array `[1, 2, 3]` and pass it a block as an argument. This creates an inner scope. ""
+
+
+
+We initialize the `arr` array and set it equal to the array `[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]`. 
+
+We then initialize a new array, `incremented`. This array is set equal to the following value:
+We invoke the `map` method over the `arr` array and pass it a block argument. This creates an inner scope. The `map` method iterates over every element in the calling array and passes each to the block. Within the block, the element is assigned to the block parameter `n`. Within the block, the element is incremented by 1, returning the value of the element + 1. The `map` method collects these return values into an array that it returns, in this case, `[2, 3, 4, 5, 6, 7, 8, 9, 10, 11]`. We set `incremented` to this array. 

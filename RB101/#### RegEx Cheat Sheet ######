@@ -1,0 +1,133 @@
+#### RegEx Cheat Sheet ######
+
+(1) Match a specific substring, not a pattern:
+/substring/
+example: /s/ matches first instance of "s"
+x = 'hello'
+x.match(/s/) ==> nil
+x.match(/h/) == true
+
+
+
+(2) RegEx special characters that require escaping
+$ ^ * + ? . ( ) [ ] { } | \ /
+
+(3) Alternation
+/(cat|dog|mouse)/
+
+(4) control character escapes
+\n - line feed
+\r - carriage return -- almost never used these days
+\t - tab
+
+(5) Ignoring case 
+/s/i
+
+
+Character Class
+[abcd] << a string pattern, denoted by brackets 
+
+Special characters that require escaping inside character classes
+^ \ - [ ]
+
+Note: ^ only requires escaping if it's used in the beginning of the class
+Note: - only requires escaping if it's not used in the beginning of the class
+
+(6) Ranges: [a-z] [A-Z] [0-9]
+
+(7) Negated classes: [^y], [^aeiou]
+
+Character Class shortcuts
+(8) `.` represents *any* character
+(9) Whitespace: \s  <<<--- whitespace is ' ', tab, newline, carrage return, etc. 
+(10) Anything NOT whitespace: \S
+
+
+Other useful shortcuts:
+\d  Any decimal digit (0-9)
+\D  Any character but a decimal digit
+\h  Any hexadecimal digit (0-9, A-F, a-f) (Ruby)
+\H  Any character but a hexadecimal digit (Ruby)
+\w  Any **word** character - this is a-z A-Z 0-9 and _
+\W any *non-word* character
+
+Anchors:
+(1) ^ - anchors regex to start of line
+(2) $ - anchors regex to end of line 
+(3) \A - beginning of string
+(4) \z - end of string including newline character
+(5) \Z - end of string not including newline character
+(6) \b - word boundary
+(7) \B - NOT word boundary
+
+Quantifiers
+(1) * - zero or more of the pattern
+(2) + - one or more of the pattern 
+(3) ? - one or none of the pattern 
+(4) p{m} - m occurances of the letter p
+(5) p{m,} - m or more occurances of the letter p
+(6) p{m, n} - m to n occurances of the letter p (inclusive)
+(7) Setting the regex to be greedy vs. lazy -- use ? after the quantifier to indicate lazy match
+
+
+Backreference
+>> You can backreference a capture group. For example, if your regex contains (xxx)(1234)(abc),
+\1 references (xxx), \2 references(1234) and \3 references (abc)
+>> You can only backreference up to 9 capture groups
+
+Useful methods:
+(1) Match method - text.match(/regex expression/) -- returns truthy value
+>> Also .match? to return true/false
+(2) =~ /regex expression/ -- returns index in string where regex is first found
+(3) split(pattern) -- splits your string into substrings based on the delimiter 
+(4) sub - transforms the first instance of the pattern
+(4) gsub - transforms all instances of the pattern (think: global sub)
+
+
+
+Helpful examples:
+(1) text.gsub(/[aeiou]/, '*')
+(2) text.sub(/(['"]).+\1/, '\1The Time Machine\1')
+(3) Include final punctuation in split using lookback: file_data.split(/(?<=[\.\!\?])/)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

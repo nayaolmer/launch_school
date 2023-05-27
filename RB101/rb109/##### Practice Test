@@ -1,0 +1,182 @@
+##### Practice Test
+https://github.com/Kcstills17/RB109/blob/master/practice_test.rb
+
+(1)
+
+The code prints:
+```
+0
+1
+2
+```
+
+The count_sheep method utilizes the `times` method to print numbers 0 through 5. Within the times method, there is an escape condition: once the times method reaches the number 2, it exits the method rather than continuing to print the numbers 3, 4, and 5. Thus, the output of this code will be limited to 0, 1, and 2 and not continue up to 3, 4, and 5. 
+
+(2) 
+In this code snippet, we set local variable `a` equal to 4 and local variable `b` equal to 2. 
+We then call the `times` method, naming the items we are enumerating over to `a`. Then, we set `a` equal to 5 within the scope of the `times` method and print the value of `a` as defined within the scope of the `times` `do..end` block. Then, we print the value of the local variables `a` and `b` and behold that `a` was never changed to 5. 
+
+The critical concept demonstrated here is the behavior of scope within `do..end` blocks. We reference `a` in two different places in this script, but within the scope of the `do..end` block, the reference of `a` as the elements being enumerated over takes precedence over the local variable setting of `a`, resulting in the local variable `a` being untouched by the `times` method. If, for example, we change the enumerator from `|a|` to `|n|`, the local variable `a` will in fact be set to 5. 
+
+(3)  
+Count returns the count of the items in the array that meet the match condition. In this case, count returns the integer 2. You can check this by setting a variable equal to this block and printing the value of the variable.
+
+For example:
+
+x = ['ant', 'bat', 'caterpillar'].count do |str|
+        str.length < 4
+      end
+
+puts x
+
+(4) 
+The issue is that we have set the sunshine array to the **strings** 'true' and 'false', not to the **actual values** `true` and `false`. Since any string is a truthy value, the `if sunshine` statement will always return `true`. 
+
+We can easily fix this by setting `sunshine = [true, false] `
+
+(5) 
+The map block will return [nil, 'bear']. The `map` method always returns an array, regardless of whether it was used with a hash or an array. As the map method loops over the keys and values of the hash, the condition will return `nil` for `ant` and `bear` for `bear` both of these values will be appended into a new array which is then returned by the method. 
+
+(6) 
+The code will forever print 1. That is because the first if condition is `if true == true`, which will always be `true`. Therefore the second condition will never be met and the method will always return 1. 
+
+(7)
+The issue here is that the break condition in the loop is `if i > colors.length`. However, indexes are always one behind the length of an array since they start with 0. Therefore, continuing to increase the index reference of i by 1 above the total number of indeces in the array results in nil values. Nil values are not strings and must be converted to strings before concatenating them within other strings. 
+
+There are two ways to solve this problem depending on what the user wants. 
+(1) You can set the break condition to `if i >= colors.length - 1`. This ensures the loop always prings sentences with non-nil values for `colors` and `things`.
+(2) If for whatever reason the user wants to continue to print sentences beyond the values of the array, we can adjust the code to explicitly convert the `nil` values to strings: 
+puts "I have a #{colors[i]} #{things[i]}."
+puts "And a #{colors[i]} #{things[i]}."
+
+
+(8) 
+Since a print statement always returns `nil`, the code returns `nil` but outputs 10. 
+
+This code demonstrates the concept that loops can reference and mutate variables set outside the scope of the loop
+
+(9)
+In the original code, the `a` array remains `['a', 'b', 'c']`. If we were to call `map!` instead of `map`, `a` would be mutated within the function and instead return `["I like the letter: a", "I like the letter: b", I like the letter: c"]`. This demonstrates that certain variable types, like arrays, can be mutated within the scope of a method.
+
+(10)
+The following code returns nil since print statements always return nil.
+The output of the code is that a still equals 3 and b equals 5. What this demonstrates is that the variable `a` is not mutated by the method plus, even though it may appear that the method would mutate it based on the line `x = x + y`. This is because a points to an integer object ID, which cannot get mutated inside the scope of a method. 
+
+(11) 
+Both `s` and `t` are both equal to "HELLO!". This is because the method `fix` applies two methods which mutate the caller - `upcase!` and `concat`. Since `s` is a string, and the `upcase!` and `concat` methods mutate string callers, s is mutated by the call `fix(s)`. The method `fix` also outputs the new string, so the variable `t`, which is set equal to the return value of `fix`, also is equal to "HELLO!"
+
+(12)
+The return value is `{"a"=>"ant", "b"=>"bear", "c"=>"cat"}`. If we had simply been calling the `each` method, we would only return ['ant', 'bear', 'cat']. However, the `each_with_object` method iterates over the items in an enumerable object similary to how `each` does, but returns a new object as specified within the () of the method. In this case, a `hash` is specified as the object. Within the `do...end` block, the hash is populated with key-value pairs which consist of the first letter of the item as the key and the full value of the item as the value. 
+
+(13) 
+In this code snippet, we are setting an array equal to the return value of a `select do end` code block. The `select` method for enumerables iterates over every item in the referenced array (in this case the numbers 1 through 10 as listed in arr). If the condition listed within the `do end` block returns true, the value of that item is stored in a new array. 
+In this specific block, the final command is `puts n`, and print statements always return `nil`. Since the final return value is `nil` for every object in `arr`, `new_array` will be an empty array. This demonstrates the concept of "truthy" vs. "falsey" values in Ruby and how that impacts return values. 
+
+This snippit outputs `[]`
+
+(14) 
+The `Hash#any` method in Ruby iterates over the key/value pairs of the hash and checks if any of the keys/values match the specified condition. It then returns `true` if the specified condition is met **at least once**. Otherwise, it returns false. 
+
+In this code snippet, we utilize the `Hash#any?` method to check if any of the values in the Hash are longer than 4 characters. Since none of the values in the hash are longer than 4 characters, this code snippet returns `false`.
+
+(15)
+
+In this code snippet, we are trying to use the `Array#map` method to extract even numbers. However, the `map` method does not extract specific values while ignoring others (unlike methods like `select`). `map` iterates over every value in the array and returns a value based on the condition specified in the `do..end` block. In this case, the `do..end` block will return `nil` for odd numbers, and the value of the number for even numbers. So, in the end, the `even_numbers` array will return [nil, 2, nil, 6, nil, nil, 8]. 
+
+If we want to select only the even numbers, we should utilize the `Array#select` method instead:
+numbers = [5, 2, 9, 6, 3, 1, 8]
+even_numbers = numbers.select { |n| n.even? }
+p even_numbers # expected output: [2, 6, 8]
+
+Select works better in this case since it returns the subset of the array that returns `true` against the condition specified in the `do..end` block.
+
+(16) 
+This code will fail to run and through the following error: 
+```
+`my_value': undefined local variable or method `a' for main:Object (NameError)
+```
+This is because the method `my_value` references a variable whose value is set outside the scope of the variable. Methods cannot reference non-global variables. They can only reference variables that are defined within their inputs. 
+
+(17)
+This code utilizes a `each do..end` block to calculate the difference between what you earned and spent in three months. However, all the block does is set the value of `balance` to the balance of the last month in the list of months in the array, rather than being additive. 
+
+This can be easily fixed by simply changing the `=` in `balance = calculate_balance(month)` to `+=` : `balance += calculate_balance(month)`. This keeps track of prior months rather than just returning the balance of the  most recent month. 
+
+(18)
+
+In the following code, `a` and `b` are set as local variables. Then, a `loop` creates a new variable, c, which is strictly accessible within the scope of the `loop` statement. The loop then sets the variable `a` to the same value as `c`, which is 3. Once the loop ends, we print the values of `a` and `b`, only to find that the value of `a` is no longer 4 but 3. 
+What this demonstrates is that loops can mutate local variables within their scope. 
+
+The code returns nil and outputs:
+3
+2
+
+
+(19)
+In this code snippet, we set a player's stats to a hash. We then want to add values to the values of the hash based on what the player selects as their character class. However, we make two critical mistakes: 
+(1) We do not convert the character class input from a string to symbol. The `character_classes` hash uses symbols, not strings for its keys.
+(2) We do not mutate the caller when we call the `merge` method on player. The line `player.merge(character_classes[input])` outputs the merged values but returns the original hash, losing the added stats. 
+
+To fix both of this issues, we change the line `player.merge(character_classes[input])` to `player.merge!(character_classes[input.to_sym])`
+
+
+(20)
+The method `Hash#each_with_object` iterates over a Hash and returns a new object as defined within the method call containing the values returned in the iteration. 
+
+In this example, `each_with_object` iterates over the Hash. The output speficied is an array, as noted by the `[]` specified within the parantheses following the method call. Within the `each...do` block, the key/value pair is flattened into an array, and the last element of the array (in this case, the key), is appended into the returned array. 
+
+(21) 
+
+In this code snippet, we set the variable `a` equal to 7. We then create an array `array` which equals `[1, 2, 3]`. Next, we use the `each` method to iterate over the array and add 1 to each sub element of the array without mutating the original array. Finally, we print the value `a`, which reamins 7. 
+
+The key concept displayed here is that within the scope of the `each` method, the variable set for the enumerable in the parallel brackets || takes precedence over a variable with the same name that's set outside the scope of the `do..end` block. Specifically, here we set the enumerable = |a|, and within the `do..end` block, the variable `a` is considered the value of the enumerable, not the value of the variable `a` that we set initially at the start of our code. 
+
+(22) 
+In this code snipped, Magdalena sets a hash where each key represents a single type of pet and each value contains all the names of that specific type of pet. 
+
+When Magdalena tries to add `bowser` to her list of dogs names, instead of adding `bowser` to the list, she sets the entire value if the `dog` key to `bowser`. Magdalena can easily fix this by appending `bowser` to the value, rather than setting the value to bowser, like so:
+
+original: 
+pets[:dog] = 'bowser'
+
+fixed: 
+pets[:dog] << 'bowser'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
